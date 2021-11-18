@@ -5,6 +5,7 @@ let bombs = [];
 let win = document.querySelector(".win");
 let lose = document.querySelector(".lose");
 let counter = 0;
+const bombsNum = 16;
 
 function getSquares(value) {
     if (value == "easy") {
@@ -15,7 +16,7 @@ function getSquares(value) {
             <div class="square easy">${i}</div>
             `
         }
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < bombsNum; i++) {
             bombs[i] = random(100, 1);
         }
         console.log(bombs);
@@ -28,7 +29,7 @@ function getSquares(value) {
             <div class="square hard">${i}</div>
             `
         }
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < bombsNum; i++) {
             bombs[i] = random(81, 1);
         }
         console.log(bombs);
@@ -41,7 +42,7 @@ function getSquares(value) {
             <div class="square extreme">${i}</div>
             `
         }
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < bombsNum; i++) {
             bombs[i] = random(49, 1);
         }
         console.log(bombs);
@@ -54,14 +55,13 @@ function click(square) {
         square[i].addEventListener("click", function () {
             square[i].classList.add("safe");
             counter++;
-            console.log(counter);
             for (let j = 0; j < bombs.length; j++) {
                 if (i + 1 == bombs[j]) {
                     square[i].classList.remove("safe");
                     square[i].classList.add("bomb");
                     lose.classList.add("active");
                 }
-                if (i + 1 != bombs[j] && counter >= square.length - 10) {
+                if (i + 1 != bombs[j] && counter >= square.length - bombsNum) {
                     win.classList.add("active");
                 }
             }
@@ -78,6 +78,6 @@ document.getElementById("btn").addEventListener("click", function () {
     getSquares(difficulty.value);
     let square = document.getElementsByClassName("square");
     click(square);
-
-
 })
+
+
