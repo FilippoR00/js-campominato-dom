@@ -5,7 +5,7 @@ let bombs = [];
 let win = document.querySelector(".win");
 let lose = document.querySelector(".lose");
 let counter = 0;
-const bombsNum = 16;
+const bombsNum = 1;
 let score = document.getElementsByClassName("score");
 
 function getSquares(value) {
@@ -55,7 +55,9 @@ function click(square) {
     for (let i = 0; i < square.length; i++) {
         square[i].addEventListener("click", function () {
             square[i].classList.add("safe");
-            counter++;
+            let safe = document.getElementsByClassName("safe");
+            counter = safe.length;
+            console.log(counter);
             for (let j = 0; j < bombs.length; j++) {
                 if (i + 1 == bombs[j]) {
                     square[i].classList.remove("safe");
@@ -69,7 +71,7 @@ function click(square) {
                     lose.classList.add("active");
                     score[0].innerHTML = `Score: ${counter - 1}`;
                 }
-                if (i + 1 != bombs[j] && counter >= square.length - bombsNum) {
+                if (i + 1 != bombs[j] && counter == square.length - bombsNum) {
                     win.classList.add("active");
                     score[1].innerHTML = `Score: ${counter - 1}`;
                 }
