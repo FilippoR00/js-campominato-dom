@@ -58,7 +58,13 @@ function click(square) {
             for (let j = 0; j < bombs.length; j++) {
                 if (i + 1 == bombs[j]) {
                     square[i].classList.remove("safe");
-                    square[i].classList.add("bomb");
+                    for (let k = 0; k < square.length; k++) {
+                        for (let l = 0; l < bombs.length; l++) {
+                            if (k + 1 == bombs[l]) {
+                                square[k].classList.add("bomb");
+                            }
+                        }
+                    }
                     lose.classList.add("active");
                 }
                 if (i + 1 != bombs[j] && counter >= square.length - bombsNum) {
