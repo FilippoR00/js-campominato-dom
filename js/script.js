@@ -5,7 +5,7 @@ let bombs = [];
 let win = document.querySelector(".win");
 let lose = document.querySelector(".lose");
 let counter = 0;
-const bombsNum = 1;
+const bombsNum = 16;
 let score = document.getElementsByClassName("score");
 
 function getSquares(value) {
@@ -20,7 +20,7 @@ function getSquares(value) {
         for (let i = 0; i < bombsNum; i++) {
             bombs[i] = random(100, 1);
         }
-        console.log(bombs);
+        bombs = checkDuplicate(bombs);
     }
     if (difficulty.value == "hard") {
         content = "";
@@ -81,6 +81,23 @@ function click(square) {
 function random(max, min) {
     let randNum = Math.floor(Math.random() * (max - min + 1) + min);
     return randNum;
+}
+
+function checkDuplicate(value){
+    for (let i = 0; i < bombsNum; i++) {
+        for (let j = i + 1; j < bombsNum; j++) {
+
+            if (value[i] == value[j]) {
+                do {
+                    value[i] = random(100, 1);
+                }
+                while (value[i] == value[j]);
+                i = 0;
+            }
+        }
+    }
+    console.log(value);
+    return bombs;
 }
 
 document.getElementById("btn").addEventListener("click", function () {
