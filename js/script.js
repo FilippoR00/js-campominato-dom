@@ -5,7 +5,7 @@ let bombs = [];
 let win = document.querySelector(".win");
 let lose = document.querySelector(".lose");
 let counter = 0;
-const bombsNum = 1;
+const bombsNum = 16;
 let score = document.getElementsByClassName("score");
 
 function getSquares(value) {
