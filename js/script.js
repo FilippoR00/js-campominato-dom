@@ -5,7 +5,8 @@ let bombs = [];
 let win = document.querySelector(".win");
 let lose = document.querySelector(".lose");
 let counter = 0;
-const bombsNum = 16;
+const bombsNum = 1;
+let score = document.getElementsByClassName("score");
 
 function getSquares(value) {
     if (value == "easy") {
@@ -66,9 +67,11 @@ function click(square) {
                         }
                     }
                     lose.classList.add("active");
+                    score[0].innerHTML = `Score: ${counter - 1}`;
                 }
                 if (i + 1 != bombs[j] && counter >= square.length - bombsNum) {
                     win.classList.add("active");
+                    score[1].innerHTML = `Score: ${counter - 1}`;
                 }
             }
         })
@@ -81,6 +84,7 @@ function random(max, min) {
 }
 
 document.getElementById("btn").addEventListener("click", function () {
+    counter = 0;
     getSquares(difficulty.value);
     let square = document.getElementsByClassName("square");
     click(square);

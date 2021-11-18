@@ -118,10 +118,15 @@ button{
     border-radius: 25px;
 }
 
-.message div{
+.message > div{
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    height: 300px;
+}
+
+.message div div{
+    line-height: 100px;
 }
 
 .active{
