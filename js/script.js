@@ -33,7 +33,7 @@ function getSquares(value) {
         for (let i = 0; i < bombsNum; i++) {
             bombs[i] = random(81, 1);
         }
-        console.log(bombs);
+        bombs = checkDuplicate(bombs);
     }
     if (difficulty.value == "extreme") {
         content = "";
@@ -46,7 +46,7 @@ function getSquares(value) {
         for (let i = 0; i < bombsNum; i++) {
             bombs[i] = random(49, 1);
         }
-        console.log(bombs);
+        bombs = checkDuplicate(bombs);
     }
     box.innerHTML = content;
 }
